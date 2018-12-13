@@ -1,7 +1,8 @@
 var obj = {
     '' : '234', // 空字符串可以作为属性名
     a : '1231',
-    'a': '1231231' // 'a' 和 a 是同一个属性名。这里会覆盖上一个
+    'a': '1231231', // 'a' 和 a 是同一个属性名。这里会覆盖上一个
+    c:null
 }
 console.log(obj.a)
 console.log(obj[''])
@@ -87,3 +88,28 @@ tt.f();
 // 2 当对象里的函数使用箭头函数作为实际参数时，可以将this绑定为当前对象
 // 3 如果有对象嵌套的情况，则this绑定到最近的一层对象上
 // 4 非箭头函数作为实际参数时，指向函数的调用者
+
+
+// typeof
+console.log( typeof obj.a === 'string')
+console.log( typeof obj.d === 'undefined')
+console.log( typeof obj.c)
+
+
+var a1 = {
+    a: '123'
+}
+var a2 ={
+    a: '123'
+}
+console.log(undefined === null) //
+
+// forin 用于遍历对象的属性
+for(a in obj){
+if(obj.hasOwnProperty(a))
+    console.log(a+':'+obj[a])
+if(a===''){
+    delete obj[a];
+}
+}
+console.log(obj) // {a: "bb", c: null}
