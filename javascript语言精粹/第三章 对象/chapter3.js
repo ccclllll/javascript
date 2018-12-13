@@ -58,3 +58,32 @@ obj.a = 'bb'
 console.log(obj)
 
 console.log(obj5['a'])
+
+var tt = {
+    a: 'occ',
+    b: function(){
+       console.log(this) // tt
+    },
+    c:()=>console.log(this), // window
+    d:function(){
+        setTimeout(()=>console.log(this),100)  // tt
+    },
+    e:function(){
+        setTimeout(function(){console.log(this)},100) // window
+    },
+    f:function(){
+        var a = ()=>{
+            console.log(this) // window
+        };
+        a();
+    }
+}
+tt.b();
+tt.c();
+tt.d();
+tt.e();
+tt.f();
+// 1 匿名函数的this总是指向window
+// 2 当对象里的函数使用箭头函数作为实际参数时，可以将this绑定为当前对象
+// 3 如果有对象嵌套的情况，则this绑定到最近的一层对象上
+// 4 非箭头函数作为实际参数时，指向函数的调用者
