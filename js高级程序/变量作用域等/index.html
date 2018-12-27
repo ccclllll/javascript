@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="index.js"></script>
+    <title>Document</title>
+    <style>
+        div {
+            color: red;
+        !important;
+
+        }
+
+        .flex {
+            height: 500px;
+            display: flex;
+            align-items: center; /** 定义flex子项在flex容器的当前行的侧轴（纵轴）方向上的对齐方式。 **/
+            justify-content: center; /** 设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式。**/
+            /*align-content: center;*/ /** 横轴对齐方式，元素**/
+            flex-wrap: wrap;
+        / / 多行
+        }
+
+        p {
+            width: 300px;
+        }
+
+        .processbar-wrapper {
+            position: relative;
+            background-color: #8699a4;
+            width: 100%;
+            height: 20px;
+            box-shadow: 2px 2px 8px  #e2141e inset ;
+            border-radius: 5px;
+        }
+
+        .processbar-wrapper > .processbar-content {
+            position: absolute;
+            background-color: #528CE0;
+            width: 50%;
+            top:1px;
+            height: 18px;
+            border-radius: 5px;
+        }
+
+        .processbar-wrapper label{
+            display: block;
+            position: absolute;
+            height: 100%;
+            width: auto;
+            left: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="flex"><p>content content</p>
+    <p>content content</p>
+    <p>content content</p>
+    <p>content content</p>
+    <p>content content</p>
+    <p>content content</p>
+    <p>content content</p>
+    <p>content content</p></div>
+<div style="width: 400px">
+    <p dir="rtl">sdfsaasfd</p>
+</div>
+
+
+<div style="width: 600px">
+    <div class="processbar-wrapper">
+        <div class="processbar-content">
+            <label class="prcessbar-label">50%</label>
+        </div>
+    </div>
+</div>
+<!-- 重要！！！！！！！！！！-->
+<!-- relative 根据其祖宗定位元素进行定位，<!!!!!!>若无 已指定定位方式的祖宗元素，则一直追溯到body  -->
+<div style="width: 700px;height:500px;background-color:red;margin-top: 600px;overflow: hidden;position: relative">
+    <div style="position: absolute;width: 50%;height: 50%;background-color: #528CE0;top:70px;left: 0">
+        <div style="position: relative;width: 50%;height: 50%;background-color: black">
+
+        </div>
+        <div style="position: relative;width: 50%;height: 50%;background-color: #a20131">
+
+        </div>
+        <div style="position: relative;width: 50%;height: 50%;background-color: black">
+
+        </div>
+
+    </div>
+</div>
+</body>
+<script>
+    /*
+        window.onload = function () {
+            var body = document.getElementsByTagName('body').item(0);
+            console.log(body)
+            //body.appendChild()
+
+            body.insertAdjacentHTML("afterend",'<div style="width: 100px;height: 100px;background-color: #2b81af" onclick=\"alert(\'hhh\')\"></div>')
+           // body.append
+        }
+    */
+
+
+</script>
+</html>
