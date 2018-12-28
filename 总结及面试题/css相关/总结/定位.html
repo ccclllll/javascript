@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .position {
+            position: relative;
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .position-two{
+            width: 100%;
+            height: 500px;
+        }
+        .position-two > .position-left {
+            position: absolute;
+            width: 400px;
+            height: 500px;
+            background-color: #a20131;
+        }
+
+        .position-two > .position-right {
+            position: absolute;
+            height: 500px;
+            background-color: #a29b9c;
+            left: 400px;
+            right: 0;
+            bottom: 0;
+            top: 0;
+        }
+
+
+        .position-setcenter{
+            height: 400px;
+            background: #3f7ccf;
+        }
+        .position-setcenter>.center{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            background-color: black;
+        }
+
+        .flex{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            background: #3f7ccf;
+        }
+        .center-flex{
+            width: 200px;
+            height: 200px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+
+<h1>左边宽度固定，右边自适应</h1>
+<div class="position position-two">
+    <div class="position-left">
+
+    </div>
+    <div class="position-right">
+
+    </div>
+</div>
+
+<div class="position position-two" style="margin-top: 30px">
+    <div style="width: 400px;float: left;background-color: black;height: 500px">
+
+    </div>
+    <div style="float: right;background-color: #528CE0;height: 500px;width: calc(100% - 400px)">
+
+    </div>
+</div>
+<h1>居中</h1>
+<h2>绝对定位居中</h2>
+<div class="position position-setcenter">
+    <div class="center">
+
+    </div>
+</div>
+<h2>flex 居中</h2>
+<div class="position flex">
+    <div class="center-flex">
+
+    </div>
+</div>
+
+<div style="height: 400px;background-color: #0d3349">
+    <div style="height: 80px;background-color: #1d0b29;margin-top: 100px">
+
+    </div>
+
+    <div style="height: 200px;background-color: #e2141e;margin-top: 100px;margin-bottom: 80px">
+
+    </div>
+</div>
+
+<div style="height: 400px;background-color: #cc338f">
+
+
+</div>
+</body>
+</html>

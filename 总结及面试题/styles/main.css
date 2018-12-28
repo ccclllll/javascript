@@ -1,0 +1,41 @@
+header>nav{
+
+}
+nav>a{
+    margin-left: 15px;
+}
+nav>a:nth-child(1){
+    margin-left: 0;
+}
+@media all and (min-width: 1200px){
+    main{
+        width: 800px;
+        margin-left: calc((100% - 800px) / 2 );
+        background-color: #fff;
+    }
+}
+@media all and (max-width: 1200px){
+    main{
+        width: 600px;
+        margin-left: calc((100% - 600px) / 2 );
+        background-color: #fff;
+    }
+}
+
+@media all and (max-width: 600px){
+    main{
+        width: 100%;
+        margin-left: 0;
+        background-color: #fff;
+    }
+}
+main>section{
+    min-height: 200px;
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+a:hover.a{
+    color: red;
+}
+:link{
+    font-size: 20px;
+}
