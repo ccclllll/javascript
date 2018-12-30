@@ -168,3 +168,49 @@ console.log(person.sayName())
    })
 
    promeise.then((value)=>console.log(value))
+
+
+   
+   function Sinleton(name){
+       if(!Sinleton.prototype.obj){
+            this.name = name;
+            Sinleton.prototype.obj = this;
+       }else{
+            return Sinleton.prototype.obj;
+       }
+    
+   }
+   Sinleton.prototype.setName = function(v){
+       this.name = v;
+   }
+
+   var sin = new Sinleton('32432');
+   console.log(sin);
+   sin.setName('adasa')
+   console.log(new Sinleton())
+
+   function SingleFactory(){
+       var single;
+       
+       function Single(){
+           this.name = 'single';
+       }
+
+       Single.prototype.setName= function(v){
+        this.name = v;
+    };
+
+       if(!single){
+           single = new Single();
+       }
+
+       return {getInstance:function(){
+                return single;
+           }
+       }
+   }
+
+   var fac = SingleFactory();
+   console.log(fac.getInstance())
+   fac.getInstance().setName('sadasdds')
+   console.log(fac.getInstance())

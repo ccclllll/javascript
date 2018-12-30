@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+        /** var 变量申明提升**/
+        (function(){
+            if(false){
+                var index = 1;
+            }
+
+            console.log(index); //undefined 变量申明会提升至函数顶部(其实就是因为js没有块级作用域，只有函数作用域，所以即使在块级代码之外，也能访问var声明的变量)
+        })();
+
+        /**let 可以声明块级变量，且可禁止重复声明 **/
+
+        (function (){
+            if(false){
+                let index = 1;
+            }
+          //  console.log(index);// error
+        })();
+
+        /** const 不允许值改变 与指针常量类似.声明时必须初始化 也是块级变量的声明方式 **/
+        (function (){
+     
+            const a = 1;
+            //a = 2; // error
+
+            const obj = {
+                a:1
+            };
+            obj.a = 2; // ok
+           // obj = new Object(); // eror
+        })();
+
+        /** let 和const 变量，不允许在未声明前被访问**/
+
+
+        /** 使用let，在循环中，每次都会什么一个新的变量 **/
+
+        (function (){
+            let functions= [];
+            for(let i =0;i<10;i++){
+                functions.push(function (){return i}); //这里面函数闭包引用的每一个i都是不同的变量 用var声明，则引用的是同一个变量
+            }
+        })();
+
+        /**在全局环境中，let const 申明变量不会绑定到window对象**/
+
+        (function (){
+            const reg = /[a-zA-Z]+?/;
+            console.log(reg.test('abc'))
+        })();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

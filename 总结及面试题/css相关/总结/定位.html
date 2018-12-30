@@ -65,12 +65,22 @@
 </head>
 <body>
 
-<h1>左边宽度固定，右边自适应</h1>
+<h1>左边宽度固定，右边自适应。采用绝对定位，左边固定宽度。</h1>
+<p>
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    这几个属性可以改变决定定位元素的盒子大小。全为0的话盒子大小跟父元素一致
+</p>
 <div class="position position-two">
     <div class="position-left">
 
     </div>
     <div class="position-right">
+
+    </div>
+    <div style="height: 300px;width: 100px;background-color: deeppink">
 
     </div>
 </div>
@@ -83,6 +93,48 @@
 
     </div>
 </div>
+
+<p>
+    浮动三列布局 中间的部分 center的左右被float元素覆盖。必须按照左右中的顺序排列div，因为center属于非浮动，会独占一行，会把right部分挤到下面。
+</p>
+
+<div class="position position-two" style="margin-top: 30px">
+    <div style="width: 400px;float: left;background-color: black;height: 500px">
+
+    </div>
+    <div style="float: right;background-color: saddlebrown;height: 500px;width:  400px">
+
+    </div>
+    <div style="background-color: #528CE0;height: 500px;width: auto;margin:auto">
+
+        <p>sdasdas</p>
+        <div style="width: 500px;height: inherit;background:ghostwhite ">
+dsfsdfs
+        </div>
+    </div>
+
+</div>
+
+
+<p style="margin-top: 50px">
+    绝对定位三列布局 
+    top 0 
+</p>
+
+<div class="position position-two" style="margin-top: 50px">
+    <div style="width: 400px;position: absolute;background-color: black;height: 500px">
+
+    </div>
+
+    <div style="position: absolute;background-color: #528CE0;height: 500px;width: auto;margin:auto;left:400px;right: 400px;top:0;bottom: 0;">
+    </div>
+
+
+    <div style="position: absolute;background-color: saddlebrown;height: 500px;width:  400px;left:calc(100% - 400px);right: 0;">
+
+    </div>
+</div>
+
 <h1>居中</h1>
 <h2>绝对定位居中</h2>
 <div class="position position-setcenter">
@@ -107,8 +159,37 @@
     </div>
 </div>
 
-<div style="height: 400px;background-color: #cc338f">
+<div style="height: 400px;background-color: #cc338f;width: 100%;margin-top: 40px">
 
+    <div style="position: relative;height: 400px;background-color: black;width: 50%;left: 25%">
+
+    </div>
+
+</div>
+
+
+<h3>要记住relative是相对自身原来的位置进行定位</h3>
+<div style="position: relative;height: 400px;background-color: #cc338f;width: 100%;margin-top: 40px">
+    <div style="position: relative;height: 50%;background-color: black;width: 50%;top:50%;left:50%;transform: translate(-50%,-50%)">
+
+    </div>
+
+</div>
+
+<div style="position: relative;height: 400px;background-color: #cc338f;margin-top: 40px">
+  
+
+</div>
+
+<div style="position:absolute;height: 400px;background-color: #cc338f;margin-top: 40px">
+  
+
+
+</div>
+
+<span style="margin-left: 50px;padding-left: 20px;border-left: 1px solid red;background-color: #a20131">sadfadf</span>
+
+<div style="margin-left: 50px;padding: 20px;border-left: 1px solid red;height: 100px;background-color: aqua">
 
 </div>
 </body>
