@@ -21,7 +21,7 @@
             console.log('123123')
         }
         this.onStart = function(){
-            this.move();
+            document.addEventListener('click',function(e){this.move()})
         }
     }
 

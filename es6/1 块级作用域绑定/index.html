@@ -57,6 +57,23 @@
             console.log(reg.test('abc'))
         })();
 
+
+
+        (function (){
+            var str = " ";
+            console.log(str.length);
+            Array.prototype.find.call(str,(s)=> s==" " );
+            console.log(Array.prototype.find.call(str,(s)=> s==" " ));
+
+        })();
+
+        (function (){
+            var arr = [1,2,3,5];
+            console.log(arr.filter((v)=> v<=3));
+            console.log(`message${arr}`);
+      
+
+        })();
     </script>
 </head>
 <body>
