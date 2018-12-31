@@ -57,7 +57,35 @@
             console.log(reg.test('abc'))
         })();
 
-    </script>
+
+
+        (function (){
+            var str = " ";
+            console.log(str.length);
+            Array.prototype.find.call(str,(s)=> s==" " );
+            console.log(Array.prototype.find.call(str,(s)=> s==" " ));
+
+        })();
+
+        (function (){
+            var arr = [1,2,3,5];
+            console.log(arr.filter((v)=> v<=3));
+            console.log(`message${arr}`);
+      
+
+        })();
+
+        console.log("......解构....")
+
+        var {node,type} = {node:'node',type:'type'};
+        console.log(node);
+        //var uid = symbol('uid');
+        var uid = 1;
+        var person = {
+            [uid]:'a symbol'
+        }
+        console.log(person)
+    </script>,
 </head>
 <body>
     

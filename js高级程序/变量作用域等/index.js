@@ -84,11 +84,7 @@ function HttpClient() {
                 request.open('get', url);
                 request.send();
                 request.onreadystatechange = function () {
-                    if (request.readyState == 4 && request.status == 200) {
-                        resolve(request.response)
-                    } else if (request.readyState == 4 && request.status !== 200) {
-                        reject(new Error(request.statusText))
-                    }
+                    request.readyState == 4 &&(request.status == '200' ? resolve(request.response) : reject(request.response));
                 }
             }
         )
@@ -97,14 +93,13 @@ function HttpClient() {
 
 var http = new HttpClient();
 
-/*
 http.get("http://t.weather.sojson.com/api/weather/city/101030100").then(it => {
     console.log(it);
     http.get("http://t.weather.sojson.com/api/weather/city/101030100").then(it => {
         console.log(it)
     }).catch(err=>console.log(err))
 }).catch(err=>console.log(err))
-*/
+
 
 function Car() {
     this.move = function () {
@@ -302,7 +297,7 @@ function removeItem(arr,call) {
 
 var ret = removeItem(arr2,(v)=> v%3!==0) // 过滤掉返回值为false的项 将返回值为真的保留
 
-console.log(ret)
+console.log(ret);
 
 (function (window) {
 

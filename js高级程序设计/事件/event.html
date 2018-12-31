@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div style="height: 100px;background-color: gold" id="div">
+        <button style="display:block;margin: auto">click me</button>
+    </div>
+    
+    <script>
+        /**
+            事件分为捕获阶段，处于目标阶段，冒泡阶段。冒泡阶段就是将事件向上传播，会触发祖节点的事件，如果阻止事件冒泡，者事件不会向上传播
+        */
+        window.onload = function(){
+            //document.getElementsByTagName('button')[0].onclick = 
+            document.getElementsByTagName('button')[0].addEventListener('click',function(e){
+               // e.stopPropagation(); // 阻止事件冒泡，事件不会有冒泡阶段的过程，其祖先元素不会捕获到事件
+                console.log(this);
+            },true)
+        document.querySelector("#div").onclick = function(e){
+                console.log(e.currentTarget);  // e.target 是事件产生的源头 e.currentTarget 是正在处理事件的元素
+            }
+
+        }
+
+        
+
+        /** 事件委托 利用时间冒泡的原理，由元素的祖先元素来处理事件**/
+
+        
+  
+       // document.querySelector("#div").onclick = function(e){
+
+                //  处理由button传递的事件
+        //        handleEvent(e);
+         //   }
+
+     
+
+        function handleEvent(e){
+            
+        }
+
+
+    </script>
+</body>
+</html>
