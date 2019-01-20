@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,13 +9,14 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
 </head>
+
 <body>
     <div id="eve" style="height: 20px;background-color: red">
-            <div id="eve2" style="height: 50px;width:50%;background-color: black">
+        <div id="eve2" style="height: 50px;width:50%;background-color: black">
 
-        
-                </div>
-        
+
+        </div>
+
     </div>
 
     <div style="margin-top: 20px;display: grid;grid-template-columns: 100%;grid-template-rows: 100px;justify-items: center;align-items: center">
@@ -22,24 +24,64 @@
         <p>21123131</p>
     </div>
     <script>
+        // 捕获流程测试 window - > document -> html -> body -> ... -> target
         var eve = document.querySelector("#eve");
-        window.addEventListener('click',function(){console.log('window click')},true);
-        document.addEventListener('click',function(){console.log('document click')},true);
-        document.documentElement.addEventListener('click',function(){console.log('html click')},true);
-        document.body.addEventListener('click',function(){console.log('body click')},true);
-        eve.addEventListener('click',function(){console.log('eve click')},true);
+        window.addEventListener('click', function () {
+            console.log('window click')
+        }, true);
+        document.addEventListener('click', function () {
+            console.log('document click')
+        }, true);
+        // html 元素
+        document.documentElement.addEventListener('click', function () {
+            console.log('html click')
+        }, true);
+        document.body.addEventListener('click', function () {
+            console.log('body click')
+        }, true);
+        eve.addEventListener('click', function () {
+            console.log('eve click')
+        }, true);
 
-        /** 自定义事件 **/
-        var cusEvent = new CustomEvent('cusEvent',{detail:0});
+        /** 自定义事件 可携带数据**/
+        var cusEvent = new CustomEvent('cusEvent', {
+            detail: 0
+        }); 
+
         var ev = new Event('cusEve'); // 自定义事件，不可新增额外数据
-        eve.addEventListener('cusEvent',function(e){console.log(e.detail)},true);
-        setTimeout(()=> eve.dispatchEvent(cusEvent),2000);
+        eve.addEventListener('cusEvent', function (e) {
+            console.log(e.detail)
+        }, true);
+        setTimeout(() => eve.dispatchEvent(cusEvent), 2000);
+
+
+        /**
+         * 事件对象 event
+         * 常用属性和方法
+         * 1. event.preventDefault()
+         * 2. event.stopPropagation()
+         * 3. event.stopImmediatePropagation()
+         * 4. event.target 事件源 比如用来判断哪个元素被点击
+         * 5. event.currentTarget 处理事件的元素
+         * */
+
+         eve.addEventListener('click',(e)=>{
+             e.preventDefault();
+             e.stopPropagation();
+             e.stopImmediatePropagation();
+             e.currentTarget;
+             e.target; 
+         },false);
+
+
+
     </script>
 
     <div>
         <p>
-            
+
         </p>
     </div>
 </body>
+
 </html>

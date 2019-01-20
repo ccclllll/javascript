@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <script>
+        /**
+         * 冒泡排序
+         * 时间复杂度 n-1 + n-2 + ... 1 O(n^2)
+         * 思路: 第一趟排序,此时end为length-1，遍历数组到end项目，当前元素和下一个元素比较，若大于，则交换，一直到n-1 和 n项比较 ，此时最大项确定，end--
+         * 第二趟排序，遍历数组到end项目，逐个比较，确定第二大元素
+         * 以此类推，直到end为0
+         * 
+         * */
+        function bubbleSort(arr) {
+            //console.log(arr.__proto__)
+            if (!arr || arr.__proto__.constructor !== Array || arr.length < 2) {
+                return;
+            }
+            var exchange;
+            for (var end = arr.length - 1; end > 0; end--) {
+                for (j = 0; j < end; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        exchange = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = exchange;
+                    }
+                }
+            }
+            return arr;
+        }
+
+
+        /**
+         * 选择排序
+         * 时间复杂度 n + n-1 + ... 1
+         * 思路：
+         * 从数组第0个开始，假定第0个为数组最小值，0后面的项与第0项比较，确定最小项的索引，最后与第0项交换，数组最小值确定
+         * 假定第一项为剩余未排序项目的最小值，按上述方法确定数组第二小。
+         * 以此类推，直到第n-1项
+         */
+        function selectionSort(arr) {
+            if (!arr || arr.__proto__.constructor !== Array || arr.length < 2) {
+                return;
+            }
+            for (var i = 0; i < arr.length - 1; i++) {
+                var minIndex = i;
+                for (var j = i + 1; j < arr.length; j++) {
+                    arr[minIndex] < arr[j] ? minIndex : minIndex = j;
+                }
+                exchange(arr, i, minIndex);
+            }
+            return arr;
+        }
+
+        function exchange(arr, i, j) {
+            var exchange;
+            exchange = arr[i];
+            arr[i] = arr[j];
+            arr[j] = exchange;
+        }
+
+        console.log(bubbleSort([4, 5, 7, 3, 2, 9, 10]))
+        console.log(selectionSort([4, 5, 7, 3, 2, 9, 10]))
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

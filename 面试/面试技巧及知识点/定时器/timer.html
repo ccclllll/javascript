@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>事件捕获流程</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id="eve" style="height: 20px;background-color: red">
+        <div id="eve2" style="height: 50px;width:50%;background-color: black">
+
+
+        </div>
+
+    </div>
+
+    <div style="margin-top: 20px;display: grid;grid-template-columns: 100%;grid-template-rows: 100px;justify-items: center;align-items: center">
+
+        <p>21123131</p>
+    </div>
+    <div style="background-color: bisque">
+        <p>
+
+        </p>
+    </div>
+    <script>
+        // setInterval(() => {
+        //     console.log('interval console');
+        // }, 1000)
+        // setTimeout(() => console.log('timeout console'), 1000);
+        // console.log('a');
+
+
+
+
+        function timeTest() {
+            setTimeout(() => console.log('timeout'), 0); // 告诉定时器 0 秒后将setTimeout的回调放到异步队列，继续执行同步代码
+            for (var i = 0; i < 10000000000; i++) {
+
+
+            }
+            // 同步代码执行完毕，将异步队列的代码放到主线程
+        }
+
+
+
+        //timeTest();
+
+
+        // 对比setInterval  setTimeout不会跳过间隔
+        setTimeout(function fn() {
+            setTimeout(fn, 1000);
+        }, 1000);
+
+        // 当异步事件队列中已存在定时器回调函数时，当前回调函数不会放到异步队列，则该回调被跳过
+        // 当使用setInterval()时，仅当没有该定时器的任何其他代码实例时，才将定时器代码添加到队列中。
+        // 这确保了定时器代码加入到队列中的最小时间间隔为指定间隔
+        setInterval(function () {}, 1000);
+
+
+        (function test() {
+            setTimeout(function () {
+                console.log(4)
+            }, 0);
+            new Promise(function executor(resolve) {
+                console.log(1);
+                for (var i = 0; i < 10000; i++) {
+                    i == 9999 && resolve();
+                }
+                console.log(2);
+            }).then(function () { // promise 的then属于异步任务
+                console.log(5);
+            });
+            console.log(3);
+        })();
+
+        // 执行结果 1 2 3 5 4 
+
+
+        // macro - task包括： script(整体代码), setTimeout, setInterval, setImmediate, 
+        // I / O, UI rendering。
+        // micro - task包括： process.nextTick, Promises, Object.observe, MutationObserver
+        // 执行顺序： 函数调用栈清空只剩全局执行上下文， 然后开始执行所有的micro - task。 当所有可执行的micro - task执行完毕之后。 
+        // 循环再次执行macro - task中的一个任务队列， 执行完之后再执行所有的micro -
+        // task， 就这样一直循环。 
+
+        // 所以promise的then会先执行
+
+        (function () {
+            for (var i = 0; i < 4; i++) {
+                (function (val) {
+                    setTimeout(function () {
+                        console.log(val)
+                    }, 1000)
+                })(i);
+            }
+        })();
+
+        (function () {
+            for (var i = 0; i < 4; i++) { // 一定要注意 i最后等于4，而不是只加到3，而是加到了4，判断条件为fase才推出循环的
+                setTimeout(function () {
+                    console.log(i)
+                }, 1000)
+            }
+        })();
+    </script>
+
+    <div>
+        <p>
+
+        </p>
+    </div>
+</body>
+
+</html>

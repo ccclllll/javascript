@@ -6,30 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>事件捕获流程</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
 </head>
 
 <body>
     <div id="eve" style="height: 20px;background-color: red">
         <div id="eve2" style="height: 50px;width:50%;background-color: black">
-
-
         </div>
-
     </div>
 
     <div style="margin-top: 20px;display: grid;grid-template-columns: 100%;grid-template-rows: 100px;justify-items: center;align-items: center">
-
         <p>21123131</p>
     </div>
     <script>
-        
-        setInterval(() => {
-            console.log('interval console');
-        }, 1000)
-        setTimeout(() => console.log('timeout console'), 1000);
-        console.log('a')
+        var proto = {
+            a: 'a'
+        };
+        var obj1 = Object.create(proto);
+        var url = 'http://www.abc.com?name=zs&callback=success';
+        var callback = url.match(/(\&|\?)callback\=\w+(&?|$)/)[0].split(/=/)[1];
+        var srt = 'aavvbaaaaba';
+        console.log(srt.match(/a/g));
+        console.log(callback);
+
+        // 声明提前 
+
+        var i = 10;
+        var i;
+        // console.log(i);
+
+        function fun() {
+            console.log(i) // 10
+        }
+        fun.call();
+
+        console.log(b);
+        var b;
     </script>
 
     <div>
