@@ -1,5 +1,6 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,14 +9,15 @@
     <link rel="stylesheet" type="text/css" media="screen" href="carousel/carousel.css" />
     <script src="carousel/carousel.js"></script>
 </head>
+
 <body>
     <div style="width: 100%">
-            <div id="carousel" style="height: 300px;position: relative;left: 50%;transform: translate(-50%,0);width: 70%">
+        <div id="carousel" style="height: 300px;position: relative;left: 50%;transform: translate(-50%,0);width: 70%">
 
-            </div>
+        </div>
     </div>
 
-    <div style="height: 400px;margin-top: 50px;position: relative;">
+    <div style="height: 400px;margin-top: 50px;position: relative;" id="div">
 
         <div style="height: 200px;width: 100%;position: absolute;background-color: rebeccapurple">
 
@@ -45,7 +47,7 @@
         </div>
     </div>
 
-    
+
     <div style="height: 400px;margin-top: 50px;position: relative;border-bottom: 1px solid rgba(0,0,0,0);overflow: hidden;">
 
         <div style="height: 200px;width: 100%;background-color: rebeccapurple;margin:  0 0 -100px 0;">
@@ -56,23 +58,33 @@
         </div>
     </div>
     <script>
-        window.onload = function(){
-            var carousel = new C_Carousel('#carousel',{
-                items:[
-                    {src:'http://imgsrc.baidu.com/imgad/pic/item/8b82b9014a90f6037cb445933312b31bb151edda.jpg',isActive:true,title:'美丽景色'},
-                    {src:'http://pic14.nipic.com/20110613/6863287_010129137141_2.jpg',isActive:false},
-                    {src:'http://pic38.nipic.com/20140225/3554136_195849520358_2.jpg',isActive:false},
+        window.onload = function () {
+            var carousel = new C_Carousel('#carousel', {
+                items: [{
+                        src: 'http://imgsrc.baidu.com/imgad/pic/item/8b82b9014a90f6037cb445933312b31bb151edda.jpg',
+                        isActive: true,
+                        title: '美丽景色'
+                    },
+                    {
+                        src: 'http://pic14.nipic.com/20110613/6863287_010129137141_2.jpg',
+                        isActive: false
+                    },
+                    {
+                        src: 'http://pic38.nipic.com/20140225/3554136_195849520358_2.jpg',
+                        isActive: false
+                    },
                 ],
-                inteval:3000,
-                onItemChange:(item,index,element)=>{console.log(item)}
+                inteval: 3000,
+                onItemChange: (item, index, element) => {
+                    console.log(item)
+                }
             });
             carousel.create();
-        
-            carousel.start();
-         
-        }
 
-    
+            carousel.start();
+
+        }
     </script>
 </body>
+
 </html>

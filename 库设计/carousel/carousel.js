@@ -94,14 +94,17 @@
    };
 
    C_Carousel.prototype.start = function(){
-       this.inteval = setInterval(()=>{
-            if(this.carouselIndex+1<this.options.items.length){
-                this.carouselIndex++;
+       var that = this;
+       this.inteval = setTimeout(function fn(){
+            if(that.carouselIndex+1<that.options.items.length){
+                that.carouselIndex++;
             }else{
-                this.carouselIndex = 0;        
+                that.carouselIndex = 0;        
             }
-            this.buildItem(dirction.next);
-       },this.options.inteval?parseInt(this.options.inteval):2000);
+            that.buildItem(dirction.next);
+            clearTimeout(that.inteval);
+            that.inteval= setTimeout(fn,that.options.inteval?parseInt(that.options.inteval):2000);
+       },that.options.inteval?parseInt(that.options.inteval):2000);
    }
 
    C_Carousel.prototype.goto = function(index){
@@ -124,7 +127,7 @@
 
 
    C_Carousel.prototype.stop = function(){
-       this.inteval&&(clearInterval(this.inteval))
+       this.inteval&&(clearTimeout(this.inteval));
    }
 
    C_Carousel.prototype.next = function (){

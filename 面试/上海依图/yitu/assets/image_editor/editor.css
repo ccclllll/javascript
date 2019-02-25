@@ -1,0 +1,84 @@
+.editor-container {
+  position: relative;
+  min-height: 420px;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.editor-container canvas {
+  position: relative;
+}
+
+.editor-container .editor-menu {
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  height: 30px;
+  width: 150px;
+  top: 10px;
+  right: 0px;
+}
+
+.editor-menu .menu-item {
+  margin-right: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  border: 1px solid black;
+  font-size: 10px;
+}
+
+.editor-container .editor-operate {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 5px;
+  width: 100%;
+  overflow: hidden;
+  height: 40px;
+  margin: 0;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.editor-operate .operate-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  border: 1px solid black;
+  margin-right: 3px;
+}
+
+.operate-item:hover,
+.menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.editor-operate .operate-item.selected {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.editor-imgs {
+  min-height: 100px;
+  box-sizing: border-box;
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+  min-height: 100px;
+  border: 1px solid black;
+  padding: 5px 10px 0 15px;
+}
+
+.editor-imgs img {
+  width: 22%;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}

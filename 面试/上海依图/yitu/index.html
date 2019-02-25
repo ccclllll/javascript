@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="./assets/image_editor/editor.css">
+  <script src="./assets/image_editor/ImageEditor.js"></script>
+  <link rel="stylesheet" type="text/css" href="./assets/date_picker/date-picker.css">
+  <script src="./assets/date_picker/DatePicker.js"></script>
+  <style>
+    #imageEditor {
+      margin-right: 200px;
+      min-height: 600px;
+      width: 400px
+    }
+
+    #canlendar {
+      width: 400px;
+      height: 400px;
+    }
+
+    .demos>div {
+      float: left;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="demos">
+    <div>
+      <div id="imageEditor">
+      </div>
+      <div>
+        操作说明：新增图片后，选择相应的操作，然后将鼠标置于图片上，按下鼠标，滑动一段距离后松开即可画出图形。
+      </div>
+    </div>
+    <div>
+      <div id="canlendar">
+      </div>
+      <div>
+        <span id="date">
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      new ImageEditor('#imageEditor', {
+        color: '#FF0000'
+      }).create();
+      var text = document.querySelector('#date');
+      datePicker({
+        element: '#canlendar',
+        onDateSelected: (date) => {
+          text.innerText = '当前选中日期为：' + date.year + '年' + date.month + '月' + date.day + '日';
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>
